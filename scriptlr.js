@@ -25,8 +25,7 @@ var Scriptlr = function() {
     var array = Array.isArray(source);
     if (array === true) {
       source.forEach(_create);
-    }
-    else {
+    } else {
       _create(source);
     }
   };

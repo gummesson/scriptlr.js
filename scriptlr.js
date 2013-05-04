@@ -11,29 +11,29 @@
  *  Scriptlr.init(["foo","path/to/bar"]);
  *
  */
-var Scriptlr = function() {
+var Scriptlr = (function(window) {
 
-  var _document = window.document;
+  var _document_ = window.document;
 
-  var _create = function(source) {
-    var script = _document.createElement("script");
+  var _create_ = function(source) {
+    var script = _document_.createElement("script");
     script.src = source + ".js";
-    _document.body.appendChild(script);
+    _document_.body.appendChild(script);
   };
 
-  var _check = function(source) {
+  var _check_ = function(source) {
     var array = Array.isArray(source);
     if (array === true) {
-      source.forEach(_create);
+      source.forEach(_create_);
     } else {
-      _create(source);
+      _create_(source);
     }
   };
 
   return {
     init: function(source) {
-      _check(source);
+      _check_(source);
     }
   };
 
-}();
+})(window);

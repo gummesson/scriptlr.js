@@ -13,6 +13,8 @@
  */
 var Scriptlr = (function(window) {
 
+  "use strict";
+
   var _document_ = window.document;
 
   var _create_ = function(source) {

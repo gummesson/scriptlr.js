@@ -7,34 +7,33 @@
  *  License: MIT
  *
  *  Usage:
- *  Scriptlr.init("foo");
- *  Scriptlr.init(["foo","path/to/bar"]);
+ *  Scriptlr.init('foo');
+ *  Scriptlr.init(['foo','path/to/bar']);
  *
  */
 var Scriptlr = (function(window) {
 
-  "use strict";
+  'use strict';
 
-  var _document_ = window.document;
+  var document = window.document;
 
-  var _create_ = function(source) {
-    var script = _document_.createElement("script");
-    script.src = source + ".js";
-    _document_.body.appendChild(script);
+  var createScript = function(source) {
+    var script = document.createElement('script');
+    script.src = source + '.js';
+    document.body.appendChild(script);
   };
 
-  var _check_ = function(source) {
-    var array = Array.isArray(source);
-    if (array === true) {
-      source.forEach(_create_);
+  var checkSource = function(source) {
+    if (Array.isArray(source)) {
+      source.forEach(createScript);
     } else {
-      _create_(source);
+      createScript(source);
     }
   };
 
   return {
     init: function(source) {
-      _check_(source);
+      checkSource(source);
     }
   };
 

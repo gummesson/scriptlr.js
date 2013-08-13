@@ -11,11 +11,9 @@
  *  Scriptlr.init(['foo','path/to/bar']);
  *
  */
-var Scriptlr = (function(window) {
+var Scriptlr = (function(window, document) {
 
   'use strict';
-
-  var document = window.document;
 
   var createScript = function(source) {
     var script = document.createElement('script');
@@ -37,4 +35,4 @@ var Scriptlr = (function(window) {
     }
   };
 
-})(window);
+})(window, window.document);

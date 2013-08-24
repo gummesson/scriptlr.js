@@ -11,28 +11,30 @@
  *  Scriptlr.init(['foo','path/to/bar']);
  *
  */
-var Scriptlr = (function(window, document) {
+var Scriptlr = (function(document) {
 
   'use strict';
 
-  var createScript = function(source) {
+  var App = App || {};
+
+  App.create = function(source) {
     var script = document.createElement('script');
     script.src = source + '.js';
     document.body.appendChild(script);
   };
 
-  var checkSource = function(source) {
+  App.check = function(source) {
     if (Array.isArray(source)) {
-      source.forEach(createScript);
+      source.forEach(App.create);
     } else {
-      createScript(source);
+      App.create(source);
     }
   };
 
   return {
     init: function(source) {
-      checkSource(source);
+      App.check(source);
     }
   };
 
-})(window, window.document);
+})(window.document);
